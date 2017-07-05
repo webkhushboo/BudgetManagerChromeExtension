@@ -12,6 +12,15 @@ $("#saveLimit").click(function(){
 });
 
 $("#resetTotal").click(function(){
-    chrome.storage.sync.set({'total':0});
+    chrome.storage.sync.set({'total':0},function(){
+      var notifOptions = {
+                    type:"basic",
+                    title:"Total reset !!",
+                    iconUrl:"icon48.png",
+                    message:"Total has been reset to 0"
+                };
+                chrome.notifications.create('titleNotif',notifOptions);
+                   
+    });
 });
 })
